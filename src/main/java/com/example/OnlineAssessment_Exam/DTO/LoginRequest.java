@@ -1,16 +1,14 @@
 
 package com.example.OnlineAssessment_Exam.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 
 
-@Getter
-@Setter
+@Data
 public class LoginRequest {
     
-    private String username;
+    private String email;
     private String password;
     
 }
