@@ -1,6 +1,7 @@
 
 package com.example.Online_Assessment.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 import lombok.*;
@@ -19,9 +20,11 @@ public class Question {
     
     @ManyToOne
     @JoinColumn(name="category_id")
+    @JsonIgnore
     private Category category;
     
     @OneToMany(mappedBy ="question" , cascade=CascadeType.ALL)
+    @JsonIgnore
     private List<Option> options;
     private String correctAnswer;
     

@@ -3,26 +3,25 @@ package com.example.Online_Assessment.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.util.List;
 import lombok.*;
-
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "question_option") 
-public class Option {
+public class Exam {
     
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    private String optionLabel;
-    private String optionValue;
+    private String title;
+    private Integer duration;
+    private Integer totalMarks;
     
-    @ManyToOne
-    @JoinColumn(name="question_id")
+    @ManyToMany
+    @JoinTable(name="exam_question",joinColumns=@JoinColumn(name="exam_id"),inverseJoinColumns=@JoinColumn(name="question_id"))
     @JsonIgnore
-    private Question question;
-    
+    private List<Question> questions;
 }
