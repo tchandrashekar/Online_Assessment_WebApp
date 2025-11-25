@@ -24,4 +24,8 @@ public class Exam {
     @JoinTable(name="exam_question",joinColumns=@JoinColumn(name="exam_id"),inverseJoinColumns=@JoinColumn(name="question_id"))
     @JsonIgnore
     private List<Question> questions;
+    
+    @Column(length = 1000)
+    private String instructions;
+
 }
